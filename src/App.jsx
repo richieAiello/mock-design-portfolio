@@ -1,10 +1,15 @@
 import Header from './components/header/Header';
 import Hero from './components/hero/Hero';
+import Skills from './components/skills/Skills';
+
 const App = props => {
   return (
     <>
       <Header />
-      <Hero />
+      <main>
+        <Hero />
+        <Skills />
+      </main>
     </>
   );
 };
