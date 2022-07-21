@@ -23,7 +23,7 @@
 
 .container {
   margin-inline: auto;
-  width: min(100%-2rem, 689px);
+  width: min(100% - 2rem, 689px);
 }
 
 @media (min-width: 1440px) {
