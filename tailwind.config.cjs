@@ -20,7 +20,7 @@ module.exports = {
         purple: '#552049',
         black: '#030303',
         grey: '#7a746e',
-        white: '#fff7f0',
+        cream: '#fff7f0',
       },
     },
   },

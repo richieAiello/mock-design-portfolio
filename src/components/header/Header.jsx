@@ -2,8 +2,8 @@ import logo from '../../assets/logo.svg';
 
 const Header = props => {
   return (
-    <header className="container flex justify-between items-center mt-4">
-      <img src={logo} alt="" />
+    <header className="container flex justify-between items-center mt-4 mb-8">
+      <img src={logo} alt="" className="h-12 w-12" />
       <a
         href="#"
         className="text-white bg-black rounded-full font-bold py-2 px-7
