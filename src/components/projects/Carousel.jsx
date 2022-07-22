@@ -1,33 +1,30 @@
 import { useState, useEffect, useRef } from 'react';
 import CarouselSlide from './CarouselSlide';
 import CarouselBtn from './CarouselBtn';
-import clsx from 'clsx';
+import { previous, next } from './helpers';
 import images from './images';
 import './carousel.css';
 
-// store slide images in a state array
-// use immutability ... to change state
-
-// Swap src for images with clsx
-// left slide = array.indexOf(active) - 1
-// right slide = array.indexOf(active) + 1
-// if
-// prev btn condition - if active = 1, then active = 5, else active - 1
-// next btn condition - if active = 5, then active = 1, else active + 1
-// remember images.length - 1 to find the last index.
-
 const Carousel = props => {
-  const [slides, setSlides] = useState(images);
+  const [prevSlide, setPrevSlide] = useState(images[1]);
+  const [activeSlide, setActiveSlide] = useState(images[2]);
+  const [nextSlide, setNextSlide] = useState(images[3]);
 
   const prevBtnRef = useRef(null);
   const nextBtnRef = useRef(null);
 
   const handlePrevClick = e => {
     prevBtnRef.current.focus();
+    previous(prevSlide, setPrevSlide);
+    previous(activeSlide, setActiveSlide);
+    previous(nextSlide, setNextSlide);
   };
 
   const handleNextClick = e => {
     nextBtnRef.current.focus();
+    next(prevSlide, setPrevSlide);
+    next(activeSlide, setActiveSlide);
+    next(nextSlide, setNextSlide);
   };
 
   // Allows the left and right arrow keys to operate and focus the next and previous buttons
@@ -42,7 +39,7 @@ const Carousel = props => {
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, []);
+  }, [prevSlide, activeSlide, nextSlide]);
 
   return (
     <div>
@@ -51,19 +48,19 @@ const Carousel = props => {
         md:h-[360px] md:max-w-[750px]"
       >
         <CarouselSlide
-          src="./image-slide-1.jpg"
-          className=" h-[90%] w-[243px] opacity-75 left-[-130px]
+          src={prevSlide}
+          className="fade-secondary h-[90%] w-[243px] opacity-60 left-[-130px]
           md:left-[-237px]  md:w-[486px]"
         />
         <CarouselSlide
-          src="./image-slide-2.jpg"
-          className="h-full w-[270px] left-0 right-0 mx-auto z-50 drop-shadow-lg 
+          src={activeSlide}
+          className="fade-active h-full w-[270px] left-0 right-0 mx-auto z-50 shadow-lg shadow-peach
           md:w-[540px]"
           current
         />
         <CarouselSlide
-          src="./image-slide-3.jpg"
-          className="h-[90%] w-[243px] opacity-75 right-[-130px] 
+          src={nextSlide}
+          className="fade-secondary h-[90%] w-[243px] opacity-60 right-[-130px] 
             md:right-[-237px]  md:w-[486px]"
         />
       </div>

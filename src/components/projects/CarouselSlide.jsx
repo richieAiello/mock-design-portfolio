@@ -7,7 +7,7 @@ const CarouselSlide = props => {
         loading="lazy"
         className={`
           absolute top-0 bottom-0 my-auto rounded-[0.625rem]  
-          duration-[400ms] slide-animation
+          duration-[400ms]
           ${props.className}
         `}
         aria-current={props.current}

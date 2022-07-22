@@ -1,24 +1,9 @@
 const images = [
-  {
-    src: './image-slide-1',
-    id: '1',
-  },
-  {
-    src: './image-slide-2',
-    id: '2',
-  },
-  {
-    src: './image-slide-3',
-    id: '3',
-  },
-  {
-    src: './image-slide-4',
-    id: '4',
-  },
-  {
-    src: './image-slide-5',
-    id: '5',
-  },
+  './image-slide-1.jpg',
+  './image-slide-2.jpg',
+  './image-slide-3.jpg',
+  './image-slide-4.jpg',
+  './image-slide-5.jpg',
 ];
 
 export default images;

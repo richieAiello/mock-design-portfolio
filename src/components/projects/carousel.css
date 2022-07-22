@@ -1,12 +1,25 @@
-@keyframes fade {
+@keyframes fade-active {
   0% {
-    opacity: 100%;
+    opacity: 0%;
   }
   100% {
-    opacity: 0%;
+    opacity: 100%;
   }
 }
 
-.slide-animation {
-  animation: fade 400ms;
+@keyframes fade-secondary {
+  0% {
+    opacity: 0%;
+  }
+  100% {
+    opacity: 60%;
+  }
+}
+
+.fade-active {
+  animation: backwards fade-active 400ms;
+}
+
+.fade-secondary {
+  animation: backwards fade-secondary 400ms;
 }
