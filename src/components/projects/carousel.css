@@ -1,0 +1,12 @@
+@keyframes fade {
+  0% {
+    opacity: 100%;
+  }
+  100% {
+    opacity: 0%;
+  }
+}
+
+.slide-animation {
+  animation: fade 400ms;
+}
