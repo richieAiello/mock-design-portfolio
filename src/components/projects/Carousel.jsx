@@ -45,7 +45,7 @@ const Carousel = props => {
     <div>
       <div
         className="mx-auto max-w-[350px] relative w-screen h-[180px]
-        md:h-[360px] md:max-w-[750px]"
+        md:h-[360px] md:max-w-[750px] md:mb-14"
       >
         <CarouselSlide
           src={prevSlide}
