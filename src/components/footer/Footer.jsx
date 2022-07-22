@@ -1,13 +1,12 @@
 import SharedLogo from '../shared/SharedLogo';
 import SharedLink from '../shared/SharedLink';
 
-const Header = props => {
+const Footer = props => {
   return (
-    <header className="container flex justify-between items-center mt-4 mb-8">
+    <footer className="container flex justify-between items-center pb-8">
       <SharedLogo />
       <SharedLink dark />
-    </header>
+    </footer>
   );
 };
-
-export default Header;
+export default Footer;
