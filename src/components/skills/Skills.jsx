@@ -5,7 +5,8 @@ const Skills = props => {
   return (
     <div
       className=" container grid grid-cols-[repeat(2,1fr)] gap-6 mb-[6.25rem]
-      md:grid-cols-[repeat(4,1fr)] md:mb-[7.5rem]"
+      md:grid-cols-[repeat(4,1fr)] md:mb-[7.5rem]
+      lg:grid-cols-[repeat(6,1fr)] lg:mb-[8.5rem]"
     >
       <SkillsCard
         className="h-[364px] bg-blue col-span-2 md:row-span-2"
@@ -28,12 +29,12 @@ const Skills = props => {
         text="Illustrations"
       />
       <SkillsCard
-        className="h-[182px] bg-green col-span-2"
+        className="h-[182px] bg-green col-span-2 lg:col-start-5 lg:row-start-1"
         src={skillsIcons.photo}
         text="Photography"
       />
       <SkillsCard
-        className="h-[182px] bg-purple col-span-2"
+        className="h-[182px] bg-purple col-span-2 lg:col-start-5 lg:h-[158px]"
         src={skillsIcons.motion}
         text="Motion Graphics"
       />
