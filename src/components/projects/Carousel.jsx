@@ -46,19 +46,25 @@ const Carousel = props => {
 
   return (
     <div>
-      <div className="container relative w-screen h-[180px]">
+      <div
+        className="mx-auto max-w-[350px] relative w-screen h-[180px]
+        md:h-[360px] md:max-w-[750px]"
+      >
         <CarouselSlide
           src="./image-slide-1.jpg"
-          className="left-[-150px] opacity-75"
+          className=" h-[90%] w-[243px] opacity-75 left-[-130px]
+          md:left-[-237px]  md:w-[486px]"
         />
         <CarouselSlide
           src="./image-slide-2.jpg"
-          className="left-0 right-0 mx-auto z-50 drop-shadow-lg"
+          className="h-full w-[270px] left-0 right-0 mx-auto z-50 drop-shadow-lg 
+          md:w-[540px]"
           current
         />
         <CarouselSlide
           src="./image-slide-3.jpg"
-          className="right-[-150px] opacity-75"
+          className="h-[90%] w-[243px] opacity-75 right-[-130px] 
+            md:right-[-237px]  md:w-[486px]"
         />
       </div>
       <div className="w-max space-x-4 mx-auto mt-8">
