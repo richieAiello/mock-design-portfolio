@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-const SharedLink = ({ light, dark }) => {
+const SharedLink = ({ className, light, dark }) => {
   return (
     <a
       href="#"
@@ -14,7 +14,7 @@ const SharedLink = ({ light, dark }) => {
           'focus:bg-blue': dark,
           'hover:bg-orange': light,
           'focus:bg-orange': light,
-        })}`}
+        })} ${className}`}
     >
       Free Consultation
     </a>
