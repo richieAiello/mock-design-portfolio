@@ -11,8 +11,9 @@ const AboutContext = props => {
       </p>
       <a
         href="#"
-        className="text-cream bg-peach text-[0.875rem] leading-[1.75rem] font-bold
-         px-7 py-3 rounded-full duration-[400ms] hover:bg-orange focus:bg-orange"
+        className="text-cream bg-peach text-[0.875rem] leading-7 font-bold
+         px-7 py-2 rounded-full inline-block 
+         duration-[400ms] hover:bg-orange focus:bg-orange"
       >
         Free Consultation
       </a>
