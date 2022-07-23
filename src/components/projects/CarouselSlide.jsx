@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 const CarouselSlide = props => {
   return (
-    <div className="">
+    <div>
       <img
         src={props.src}
         alt=""

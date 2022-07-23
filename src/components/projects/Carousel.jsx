@@ -44,6 +44,34 @@ const Carousel = props => {
     e.key === 'ArrowRight' && nextBtnRef.current.click();
   };
 
+  let pressed = false;
+  let startX;
+
+  const handlePointerDown = e => {
+    e.preventDefault();
+    pressed = true;
+    startX = e.nativeEvent.offsetX;
+  };
+
+  const handlePointerUp = e => {
+    pressed = false;
+  };
+
+  const handlePointerMove = e => {
+    if (!pressed) return;
+
+    let offset = e.nativeEvent.offsetX;
+
+    if (offset > startX + 5) {
+      pressed = false;
+      return handlePrevClick();
+    }
+    if (offset < startX - 5) {
+      pressed = false;
+      return handleNextClick();
+    }
+  };
+
   // Allows the left and right arrow keys to operate and focus the next and previous buttons
   useEffect(() => {
     document.addEventListener('keydown', handleKeyDown);
@@ -71,6 +99,10 @@ const Carousel = props => {
       <div
         className="mx-auto max-w-[350px] relative w-screen h-[180px]
         md:h-[360px] md:max-w-[750px] md:mb-14"
+        onPointerDown={handlePointerDown}
+        onPointerUp={handlePointerUp}
+        onPointerMove={handlePointerMove}
+        onTouchMove={handlePointerMove}
       >
         <CarouselSlide
           src={prevImage}
@@ -82,7 +114,7 @@ const Carousel = props => {
         <CarouselSlide
           src={activeImage}
           className="h-full w-[270px] left-0 right-0 mx-auto z-50 shadow-lg shadow-peach
-          md:w-[540px]"
+           cursor-grab md:w-[540px]"
           animate={animate}
           nextCard={nextCard}
           prevCard={prevCard}

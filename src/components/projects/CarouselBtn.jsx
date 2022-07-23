@@ -17,6 +17,7 @@ const CarouselBtn = (props, ref) => {
         src={props.prev ? prev : next}
         alt=""
         className="inline absolute m-auto top-0 bottom-0 left-0 right-0"
+        draggable
       />
     </button>
   );
