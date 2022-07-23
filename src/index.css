@@ -9,6 +9,28 @@
 *::before,
 *::after {
   box-sizing: border-box;
+
+  /* firefox support */
+  scrollbar-color: #030303 #f5f5f5;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 1rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #030303;
+  border-radius: 100vw;
+  border: 0.25rem solid #f5f5f5;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(3, 3, 3, 0.85);
 }
 
 /************************************************
