@@ -6,40 +6,65 @@ import images from './images';
 import './carousel.css';
 
 const Carousel = props => {
-  const [prevSlide, setPrevSlide] = useState(images[1]);
-  const [activeSlide, setActiveSlide] = useState(images[2]);
-  const [nextSlide, setNextSlide] = useState(images[3]);
+  const [animate, setAnimate] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [nextCard, setNextCard] = useState(false);
+  const [prevCard, setPrevCard] = useState(false);
+  const [prevImage, setPrevImage] = useState(images[1]);
+  const [activeImage, setActiveImage] = useState(images[2]);
+  const [nextImage, setNextImage] = useState(images[3]);
 
   const prevBtnRef = useRef(null);
   const nextBtnRef = useRef(null);
 
   const handlePrevClick = e => {
+    setNextCard(false);
+    setPrevCard(true);
+
     prevBtnRef.current.focus();
-    previous(prevSlide, setPrevSlide);
-    previous(activeSlide, setActiveSlide);
-    previous(nextSlide, setNextSlide);
+
+    previous(prevImage, setPrevImage);
+    previous(activeImage, setActiveImage);
+    previous(nextImage, setNextImage);
   };
 
   const handleNextClick = e => {
+    setPrevCard(false);
+    setNextCard(true);
+
     nextBtnRef.current.focus();
-    next(prevSlide, setPrevSlide);
-    next(activeSlide, setActiveSlide);
-    next(nextSlide, setNextSlide);
+
+    next(prevImage, setPrevImage);
+    next(activeImage, setActiveImage);
+    next(nextImage, setNextImage);
+  };
+
+  const handleKeyDown = e => {
+    e.key === 'ArrowLeft' && prevBtnRef.current.click();
+    e.key === 'ArrowRight' && nextBtnRef.current.click();
   };
 
   // Allows the left and right arrow keys to operate and focus the next and previous buttons
   useEffect(() => {
-    const handleKeyDown = e => {
-      e.key === 'ArrowLeft' && handlePrevClick();
-      e.key === 'ArrowRight' && handleNextClick();
-    };
-
     document.addEventListener('keydown', handleKeyDown);
+    setLoading(true);
+    setAnimate(true);
+
+    const timer = setTimeout(() => {
+      setAnimate(false);
+      setLoading(false);
+      // Allows the current button to re focus asyncronously
+      setTimeout(() => {
+        nextCard && nextBtnRef.current.focus();
+        prevCard && prevBtnRef.current.focus();
+      }, 0);
+    }, 250);
 
     return () => {
+      clearTimeout(timer);
       document.removeEventListener('keydown', handleKeyDown);
     };
-  }, [prevSlide, activeSlide, nextSlide]);
+  }, [activeImage]);
 
   return (
     <div>
@@ -48,20 +73,26 @@ const Carousel = props => {
         md:h-[360px] md:max-w-[750px] md:mb-14"
       >
         <CarouselSlide
-          src={prevSlide}
-          className="fade-secondary h-[90%] w-[243px] opacity-60 left-[-130px]
+          src={prevImage}
+          className="h-[90%] w-[243px] opacity-60 left-[-130px]
           md:left-[-237px]  md:w-[486px]"
+          animate={animate}
+          secondary
         />
         <CarouselSlide
-          src={activeSlide}
-          className="fade-active h-full w-[270px] left-0 right-0 mx-auto z-50 shadow-lg shadow-peach
+          src={activeImage}
+          className="h-full w-[270px] left-0 right-0 mx-auto z-50 shadow-lg shadow-peach
           md:w-[540px]"
-          current
+          animate={animate}
+          nextCard={nextCard}
+          prevCard={prevCard}
         />
         <CarouselSlide
-          src={nextSlide}
-          className="fade-secondary h-[90%] w-[243px] opacity-60 right-[-130px] 
+          src={nextImage}
+          className="h-[90%] w-[243px] opacity-60 right-[-130px] 
             md:right-[-237px]  md:w-[486px]"
+          animate={animate}
+          secondary
         />
       </div>
       <div className="w-max space-x-4 mx-auto mt-8">
@@ -70,11 +101,13 @@ const Carousel = props => {
           prev
           onClick={handlePrevClick}
           ref={prevBtnRef}
+          disabled={loading}
         />
         <CarouselBtn
           label="Click to view next project."
           onClick={handleNextClick}
           ref={nextBtnRef}
+          disabled={loading}
         />
       </div>
     </div>

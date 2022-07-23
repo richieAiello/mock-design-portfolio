@@ -1,13 +1,44 @@
-@keyframes fade-active {
+@keyframes animate-next {
   0% {
-    opacity: 0%;
+    transform: translateX(130px);
   }
+
   100% {
-    opacity: 100%;
+    transform: translateX(0);
   }
 }
 
-@keyframes fade-secondary {
+@keyframes animate-prev {
+  0% {
+    transform: translateX(-130px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@media (min-width: 768px) {
+  @keyframes animate-next {
+    0% {
+      transform: translateX(237px);
+    }
+
+    100% {
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes animate-prev {
+    0% {
+      transform: translateX(-237px);
+    }
+    100% {
+      transform: translateX(0);
+    }
+  }
+}
+
+@keyframes animate-secondary {
   0% {
     opacity: 0%;
   }
@@ -16,10 +47,14 @@
   }
 }
 
-.fade-active {
-  animation: backwards fade-active 400ms;
+.animate-next {
+  animation: backwards animate-next 250ms;
 }
 
-.fade-secondary {
-  animation: backwards fade-secondary 400ms;
+.animate-prev {
+  animation: backwards animate-prev 250ms;
+}
+
+.animate-secondary {
+  animation: backwards animate-secondary 250ms;
 }

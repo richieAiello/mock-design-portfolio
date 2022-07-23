@@ -1,3 +1,5 @@
+import clsx from 'clsx';
+
 const CarouselSlide = props => {
   return (
     <div className="">
@@ -9,8 +11,13 @@ const CarouselSlide = props => {
           absolute top-0 bottom-0 my-auto rounded-[0.625rem]  
           duration-[400ms]
           ${props.className}
+          ${clsx({
+            'animate-next': props.nextCard && props.animate,
+            'animate-prev': props.prevCard && props.animate,
+            'animate-secondary': props.secondary && props.animate,
+          })}
         `}
-        aria-current={props.current}
+        aria-current={props.primary}
       />
     </div>
   );

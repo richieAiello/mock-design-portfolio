@@ -11,6 +11,7 @@ const CarouselBtn = (props, ref) => {
       aria-label={props.label}
       onClick={props.onClick}
       ref={ref}
+      disabled={props.disabled}
     >
       <img
         src={props.prev ? prev : next}
